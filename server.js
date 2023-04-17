@@ -15,7 +15,7 @@ app.engine('jsx', require('jsx-view-engine').createEngine());
  * Middlewares
  */
 app.use((req, res, next) => {
-    console.log('I run on all routes!');
+    console.log('The Pokemon World by Brahima');
     next();
     
 });
@@ -104,6 +104,31 @@ app.get('/pokemon', (req, res) => {
 //   pokemon.splice(index, 1);
 //   res.redirect('/pokemon');
 // });
+
+//* POST a new pokemon
+app.post('/pokemon', (req, res) => {
+  const { name, img } = req.body;
+  pokemon.push({ name, img });
+  res.redirect('/pokemon');
+});
+
+//* PUT an updated pokemon
+app.put('/pokemon/:name', (req, res) => {
+  const { name } = req.params;
+  const { img } = req.body;
+  const foundPokemon = pokemon.find((p) => p.name === name);
+  foundPokemon.img = img;
+  res.redirect(`/pokemon/${name}`);
+
+});
+
+//* DELETE a pokemon
+app.delete('/pokemon/:name', (req, res) => {
+  const { name } = req.params;
+  const index = pokemon.findIndex((p) => p.name === name);
+  pokemon.splice(index, 1);
+  res.redirect('/pokemon');
+});
 
 
 

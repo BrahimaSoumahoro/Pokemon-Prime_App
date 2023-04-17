@@ -15,8 +15,17 @@ const pokemon = require('../models/pokemon');
                         )
 
                 })}
-            </ul>
-            
+            </ul> <br/>
+{/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ == Form to add new Pokemon == into the database  */}
+            <h3>Add your brand new found Pokemon here</h3>
+                <form action="/pokemon" method="POST">
+                     <label htmlFor="name">Name</label><br />
+                    <input type="text" name="name" /><br />
+                    <label htmlFor="img">Image URL</label><br />
+                    <input type="text" name="img" /><br /><br />
+                    <button type="submit">Add your new Pokemon </button><br /><br />
+                    <button type="reset">Reset </button>
+                </form>
         </div>
     )
 }
